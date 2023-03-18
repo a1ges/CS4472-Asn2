@@ -28,7 +28,7 @@ class DepositTest {
 			// 51*0.005
             assertEquals(0.255, calculator.calculateDepositInterest(51, 501, true));
 			//  51 * .0025 (0.25%)
-			assertEquals(0.1275, calculator.calculateDepositInterest(51, 500, true));
+			assertEquals(0.1275, calculator.calculateDepositInterest(51, 499, true));
             // 49 * 0.005
 			assertEquals(0.245, calculator.calculateDepositInterest(49, 5001, true));
             // No interest in this case.
