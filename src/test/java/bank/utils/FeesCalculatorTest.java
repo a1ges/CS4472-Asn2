@@ -24,16 +24,19 @@ class DepositTest {
 	// Outlined in document``
     @Test
     void testDeposit() {
+			//student block
             assertEquals(0.255, calculator.calculateDepositInterest(51, 501, true));
             assertEquals(0.1275, calculator.calculateDepositInterest(51, 500, true));
-            assertEquals(0.25, calculator.calculateDepositInterest(50, 5001, true));
-            assertEquals(0.1, calculator.calculateDepositInterest(50, 4999, true));
+            assertEquals(0.255, calculator.calculateDepositInterest(50, 5001, true));
+            // No interest in this case.
+			assertEquals(0, calculator.calculateDepositInterest(50, 4999, true));
+			// not student block
             assertEquals(2.008, calculator.calculateDepositInterest(251, 2501, false));
             assertEquals(1.004, calculator.calculateDepositInterest(251, 2500, false));
-            assertEquals(1.25, calculator.calculateDepositInterest(250, 10001, false));
+            assertEquals(0, calculator.calculateDepositInterest(250, 10001, false));
             assertEquals(.25, calculator.calculateDepositInterest(250, 10000, false));
 
-        }    
+        }   
     
     
 }
