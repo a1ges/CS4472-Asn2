@@ -32,7 +32,7 @@ class DepositTest {
             // 49 * 0.005
 			assertEquals(0.245, calculator.calculateDepositInterest(49, 5001, true));
             // No interest in this case.
-			assertEquals(0, calculator.calculateDepositInterest(50, 4999, true));
+			assertEquals(0, calculator.calculateDepositInterest(49, 4999, true));
 			// not student block
 			// 0.008 * 251
             assertEquals(2.008, calculator.calculateDepositInterest(251, 2501, false));
