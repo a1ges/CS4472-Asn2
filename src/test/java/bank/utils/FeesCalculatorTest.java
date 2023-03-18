@@ -2,6 +2,8 @@ package bank.utils;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Calendar;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -52,5 +54,33 @@ class DepositTest {
 
         }   
     
+    
+}
+
+class WithdrawalTest {
+    FeesCalculator calculator;
+
+    @BeforeEach
+    void setUp() throws Exception {
+    	calculator = new FeesCalculator();
+    }
+
+    @AfterEach
+    void tearDown() throws Exception {
+    	System.out.println("End of Withdrawal Test");
+    }
+
+    @Test
+    void test() {
+    	assertEquals(0.001, calculator.calculateWithdrawalFee(500, 1000, true, Calendar.SATURDAY)); // 1
+    	assertEquals(0.001, calculator.calculateWithdrawalFee(500, 1000, true, Calendar.SUNDAY)); // 2
+    	assertEquals(0.0, calculator.calculateWithdrawalFee(100, 500, true, Calendar.MONDAY)); // 3
+    	assertEquals(0.003, calculator.calculateWithdrawalFee(120, 850, false, Calendar.SUNDAY)); // 4
+    	assertEquals(0.003, calculator.calculateWithdrawalFee(500, 900, false, Calendar.WEDNESDAY)); // 5
+    	assertEquals(0.001, calculator.calculateWithdrawalFee(1000, 4000, false, Calendar.SATURDAY)); // 6
+    	assertEquals(0.001, calculator.calculateWithdrawalFee(1200, 4000, false, Calendar.THURSDAY)); // 7
+    	assertEquals(0.0, calculator.calculateWithdrawalFee(1000, 6000, false, Calendar.SUNDAY)); // 8
+    	assertEquals(0.0, calculator.calculateWithdrawalFee(2000, 12000, false, Calendar.TUESDAY)); // 9
+    }   
     
 }
